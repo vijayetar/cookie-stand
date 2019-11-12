@@ -1,28 +1,68 @@
 body {
   background-color: hsla(40,40%,90%,1);
-  height: 60em;
+  height: 50em;
+  word-wrap: normal;
 }
 h1 {
-  background-color: 	rgb(201, 178, 117);
-  background-image: linear-gradient(90deg,rgb(204, 193, 164),#A95833);
-  height: 15%;
+  margin: 0px auto;
+  width: 100%;
+  height: 3rem;
+  padding: 1em;
+  background-color: 	rgba(201, 178, 117, 1);
+  background-image: linear-gradient(45deg,rgba(204, 193, 164,1),#A95833);
   font-family: 'Gloria Hallelujah', cursive;
   font-size: 3em;
-  color: cornflowerblue;
+  font-weight: bolder;
+  color: rgb(46, 142, 202);
   text-transform: capitalize;
-  text-align: left;
+  text-shadow: 3px 3px 7px whitesmoke;
+  text-align: start;
+  vertical-align: text-top;
+  position: fixed;
+  z-index: 1;
 
 }
+h2 {
+  margin: 1em 0px 1em 0px;
+  width: 100%;
+  height: 1rem;
+  padding: 0.5em;
+  font-weight: bolder;
+
+}
+
+.space {
+  height: 10em;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.list {
+  width: 100%;
+  height: 60em;
+  padding: 2em auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-align: start;
+  text-indent: 5em;
+  overflow: scroll;
+ }
 
 footer{
   background-image: url("../images/salmon_blur_crop.gif");
   background-color:#6E6353;
+  width: 100%;
   height: 35%;
+  padding: 0.3em;
   font-family: 'Gloria Hallelujah', cursive;
   font-display: fallback;
+  text-indent: 1em;
   color: #2E2D28;
   font-size: 2rem;
   text-transform: lowercase;
+  position: absolute;
+  position: bottom;
 }
 
 a:link {
