@@ -262,9 +262,11 @@ limaShop.render();
 
 
 
-//Attempt to change to function
+// // // // Attempt to change to function
 
 // var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+// var position = document.getElementById('cookiesList');
+
 
 // //find the positon where the new element should be added
 // //var position = document.getElementById('cookiesList');
@@ -288,12 +290,31 @@ limaShop.render();
 //   return rndNum;
 // }
 
-// function insertElement() {
+// // insert heading in the data list
+// function insertHeading() {
 //   // identify where you want to add the list and name the list
-//   var position = document.getElementById('cookiesList');
 //   var h2El = document.createElement('h2');
 //   h2El.textContent = this.storeName;
 //   position.appendChild(h2El);
+
+// }
+// // insert list elements in the data list
+// function insertListElement() {
+//   //identify where you want to add th list
+//   var liEl = document.createElement('li');
+//   liEl.textContent = `${hours[i]} ${this.storeName} Cookies per Hour : ${this.cookiesEachHour[i]}`;
+//   //now append to the document by using .appendChild(liEl)
+//   position.appendChild(liEl);
+
+// }
+
+// // insert total cookies to the data set
+// function insertTotalElement() {
+//   var liEl = document.createElement('li');
+//   //create text content
+//   liEl.textContent = `Total Cookies per Hour : ${this.totalCookiesForTheDay}`;
+//   //append to the document by using .appendChild(liEl)
+//   position.appendChild(liEl);
 
 // }
 
