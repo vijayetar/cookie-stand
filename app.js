@@ -262,3 +262,87 @@ limaShop.render();
 
 
 
+// // // // Attempt to change to function
+
+// var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+// var position = document.getElementById('cookiesList');
+
+
+// //find the positon where the new element should be added
+// //var position = document.getElementById('cookiesList');
+
+// // Create the object constructor notation to create multiple objects
+
+// function Shop(storeName, minCustEachHour, maxCustEacHour, avgCookiesPerCustomer) {
+
+//   this.storeName = storeName;
+//   this.minCustEachHour = minCustEachHour;
+//   this.maxCustEacHour = maxCustEacHour;
+//   this.avgCookiesPerCustomer = avgCookiesPerCustomer;
+//   this.customersEachHour = [];
+//   this.cookiesEachHour = [];
+//   this.totalCookiesForTheDay = 0;
+// }
+
+// //create randomnumber method associated with Shop
+// Shop.prototype.randomNumber(this.minCustEachHour, this.maxCustEacHour) {
+//   rndNum = Math.floor(Math.random() * (this.maxCustEacHour - this.minCustEachHour + 1) + this.minCustEachHour);
+//   return rndNum;
+// }
+
+// // insert heading in the data list
+// function insertHeading() {
+//   // identify where you want to add the list and name the list
+//   var h2El = document.createElement('h2');
+//   h2El.textContent = this.storeName;
+//   position.appendChild(h2El);
+
+// }
+// // insert list elements in the data list
+// function insertListElement() {
+//   //identify where you want to add th list
+//   var liEl = document.createElement('li');
+//   liEl.textContent = `${hours[i]} ${this.storeName} Cookies per Hour : ${this.cookiesEachHour[i]}`;
+//   //now append to the document by using .appendChild(liEl)
+//   position.appendChild(liEl);
+
+// }
+
+// // insert total cookies to the data set
+// function insertTotalElement() {
+//   var liEl = document.createElement('li');
+//   //create text content
+//   liEl.textContent = `Total Cookies per Hour : ${this.totalCookiesForTheDay}`;
+//   //append to the document by using .appendChild(liEl)
+//   position.appendChild(liEl);
+
+// }
+
+// Shop.prototype.render = function () {
+
+// }
+
+
+
+// Making the table with the above contents
+//array of time for top row
+//function of header
+
+//var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+
+//function header () {}
+//create element tr
+//create element th
+//add text content as empty string as the first of the columns
+//then we have to append it to the row
+
+//next create a for loop for each of the hours in the array
+// in the loop also append to the tr element the th
+
+//outside of the loop attach the row to the body
+
+//function makeDataRow() {}
+//first for-loop create tr, and then th element, and then go through the names of the cities as an array
+// second for-loop with td elements and then add the cookies sold every hour
+// append it to the body
+
