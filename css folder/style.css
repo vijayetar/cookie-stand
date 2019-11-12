@@ -7,7 +7,7 @@ body {
 h1 {
   margin: 0px auto;
   width: 100%;
-  height: 3rem;
+  height: auto;
   padding: 1em;
   background-color: 	rgba(201, 178, 117, 1);
   background-image: linear-gradient(45deg,rgba(204, 193, 164,1),#A95833);
@@ -15,14 +15,14 @@ h1 {
   font-size: 3em;
   font-weight: bolder;
   color: rgb(46, 142, 202);
-  text-transform: capitalize;
-  text-shadow: 3px 3px 7px whitesmoke;
+  text-transform: uppercase;
+  text-shadow: -3px -3px 7px whitesmoke;
   text-align: start;
   vertical-align: text-top;
   position: fixed;
   z-index: 1;
-
 }
+
 h2 {
   margin: 1em 0px 1em 0px;
   width: 100%;
@@ -62,6 +62,7 @@ footer{
   color: #2E2D28;
   font-size: 2rem;
   text-transform: lowercase;
+  text-shadow: 1px 1px 4px black;
   position: bottom;
 }
 
