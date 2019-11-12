@@ -1,9 +1,36 @@
 body {
-  background-color: bisque;
+  /* background-color: rgb(215,188,135);  */
+  background-color: hsla(40,40%,90%,1);
+  height: 60em;
 }
 h1 {
-  background-color: blueviolet;
+  /* background-image: url("../images/salmon_blur.gif"); */
+  background-color: b#DABA7F;
+  height: 5em;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 3em;
+  color: cornflowerblue;
 }
 footer{
-  background-color: cornflowerblue;
+  background-image: url("../images/salmon_blur_crop.gif");
+  background-color:#6E6353;
+  height: 15em;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+  color: #2E2D28;
+  font-size: 2rem;
+}
+
+a:link {
+  color: white;
+  text-decoration: none;
+}
+a:visited {
+  color: white;
+}
+a:hover {
+  color:#AD5334;
+  text-decoration: underline;
+}
+a:active {
+  color:  #2B2D28;
 }
