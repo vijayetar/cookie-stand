@@ -3,6 +3,7 @@ body {
   height: 50em;
   word-wrap: normal;
 }
+
 h1 {
   margin: 0px auto;
   width: 100%;
@@ -61,7 +62,6 @@ footer{
   color: #2E2D28;
   font-size: 2rem;
   text-transform: lowercase;
-  position: absolute;
   position: bottom;
 }
 
