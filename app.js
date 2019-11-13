@@ -4,9 +4,21 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 // find the positon where the new element should be added
 var position = document.getElementById('cookiesList');
 
-// need a global variable with the names of the shop for use in the table
+var nameShop = ['Seattle', 'Tokyo', 'Dubai', 'Paris', 'Lima'];
 
-var nameShops = [];
+// // // // 11122019 - attempted to make objects within an array, and then call each object through for loop to create more objects and arrays. However the render function does not work
+
+// // // // var nameShop = [{storeName: 'Seattle', minCustEachHour: 23, maxCustEacHour: 65, avgCookiesPerCustomer: 6.3 }, { storeName: 'Tokyo', minCustEachHour: 3, maxCustEacHour: 24, avgCookiesPerCustomer: 1.2 }
+// // // // ]
+
+// // // // function listShop() {
+// // // //   for (var k = 0; k < nameShop.length; k++) {
+// // // //     console.log('nameShop is ', nameShop[k].storeName);
+// // // //     var placeShops = new Shop(nameShop[k].storeName, nameShop[k].minCustEachHour, nameShop[k].maxCustEacHour, nameShop[k].avgCookiesPerCustomer);
+// // // //     // console.log('I am crazy', placeShops.storeName);
+// // // //   }
+// // // // }
+// // // // listShop();
 
 // // create a sales list for seattleshop
 // var seattleShop = {
@@ -326,7 +338,6 @@ Shop.prototype.insertTotalElement = function () {
 };
 
 Shop.prototype.render = function () {
-  nameShops.push(this.storeName);
   // make the heading for each shop
   this.insertHeading();
 
@@ -406,11 +417,13 @@ limaShop.render();
 // // second for-loop with td elements and then add the cookies sold every hour
 // // append it to the body
 
-//  // make the table with the contents by first making the table row
+// //  // 11122019 make the table with the contents by first making the table row
 
 var table = document.getElementById('table');
-//create the first heading row
-function tableHeading() {
+
+//create function for the first heading row
+
+function tableHeadingHours() {
   var tbRow = document.createElement('tr');
   // this is the empty first box
   var thEl = document.createElement('th');
@@ -423,23 +436,83 @@ function tableHeading() {
     thEl.textContent = hours[j];
     tbRow.appendChild(thEl);
   }
+
+  // make the last column heading for the daily location totals
+  var thEl = document.createElement('th');
+  thEl.textContent = 'daily location totals';
+  tbRow.appendChild(thEl);
+
+
   //append the table row to the table in html
   table.appendChild(tbRow);
 }
 
-tableHeading();
+tableHeadingHours();
 
-function tableRows() {
+// create prototype with the contents of the shop rows
+Shop.prototype.tableRows = function () {
   // create the table row first
   var tbRow = document.createElement('tr');
   // create the first column content with the names of the places
   var thEl = document.createElement('th');
   // insert the store Name in first column
-  thEl.textContent = nameShops[0];
+  thEl.textContent = this.storeName;
   //append the store name
   tbRow.appendChild(thEl);
-  table.appendChild(tbRow)
+
+  // // create a loop to enter cookies per hour for each hour
+  for (var j = 0; j < hours.length; j++) {
+    // create the  table data cell
+    var tdEl = document.createElement('td');
+    tdEl.textContent = this.cookiesEachHour[j];
+    tbRow.appendChild(tdEl);
+  }
+  // add data for the total cookies for the day
+  var thEl = document.createElement('th');
+  thEl.textContent = this.totalCookiesForTheDay;
+  tbRow.appendChild(thEl);
+
+  //append row to the table
+  table.appendChild(tbRow);
+};
+
+// call out the tablerows
+seattleShop.tableRows();
+tokyoShop.tableRows();
+dubaiShop.tableRows();
+parisShop.tableRows();
+limaShop.tableRows();
+
+
+
+//create the last table row with the total cookies
+function tableHeadingTotals() {
+  var tbRow = document.createElement('tr');
+  // this is the empty first box
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Totals';
+  tbRow.appendChild(thEl);
+
+  // create loop to enter sum of the cookies at each hour and then append it to the table row
+  var sumTotalatEachHour = 0;
+  for (var k = 0; k < nameShop.length; k++) {
+
+    for (var j = 0; j < hours.length; j++) {
+      sumTotalatEachHour += 500;
+      var thEl = document.createElement('th');
+      thEl.textContent = sumTotalatEachHour;
+      tbRow.appendChild(thEl);
+    }
+
+    // // make the last column heading for the daily location totals
+    // var thEl = document.createElement('th');
+    // thEl.textContent = 'daily location totals';
+    // tbRow.appendChild(thEl);
+
+
+    //append the table row to the table in html
+    table.appendChild(tbRow);
+  }
 
 }
-
-tableRows();
+tableHeadingTotals();
