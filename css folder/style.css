@@ -50,6 +50,15 @@ h2 {
   overflow: scroll;
  }
 
+ #table {
+  width: 50%;
+  height: 15em;
+  margin-left: 10em;
+  margin-right: 10em;
+  padding: 2em auto;
+  overflow: scroll;
+ }
+
 footer{
   background-image: url("../images/salmon_blur_crop.gif");
   background-color:#6E6353;

@@ -4,6 +4,10 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 // find the positon where the new element should be added
 var position = document.getElementById('cookiesList');
 
+// need a global variable with the names of the shop for use in the table
+
+var nameShops = [];
+
 // // create a sales list for seattleshop
 // var seattleShop = {
 //   storeName: 'Seattle',
@@ -210,55 +214,55 @@ var position = document.getElementById('cookiesList');
 // parisShop.render();
 
 // create a sales list for Lima shop
-var limaShop = {
-  storeName: 'Lima',
-  minCustEachHour: 2,
-  maxCustEacHour: 16,
-  avgCookiesPerCustomer: 4.6,
-  customersEachHour: [],
-  cookiesEachHour: [],
-  totalCookiesForTheDay: 0,
-  render: function () {
-    // identify where you want to add the list and name the list
-    var position = document.getElementById('cookiesList');
-    var h2El = document.createElement('h2');
-    h2El.textContent = this.storeName;
-    position.appendChild(h2El);
+// var limaShop = {
+//   storeName: 'Lima',
+//   minCustEachHour: 2,
+//   maxCustEacHour: 16,
+//   avgCookiesPerCustomer: 4.6,
+//   customersEachHour: [],
+//   cookiesEachHour: [],
+//   totalCookiesForTheDay: 0,
+//   render: function () {
+//     // identify where you want to add the list and name the list
+//     var position = document.getElementById('cookiesList');
+//     var h2El = document.createElement('h2');
+//     h2El.textContent = this.storeName;
+//     position.appendChild(h2El);
 
-    for (var i = 0; i < hours.length; i++) {
-      // console.log('MAX: ',this.maxCustEacHour);
-      var difference = this.maxCustEacHour - this.minCustEachHour;
-      var rndNumber = Math.round((Math.floor(Math.random() * (difference + 1)) + this.minCustEachHour));
-      // console.log(rndNumber);
-      this.customersEachHour.push(rndNumber);
-      var cookiesHourly = this.customersEachHour[i] * this.avgCookiesPerCustomer;
-      // console.log('hourly cookies', cookiesHourly);
-      cookiesHourly = Math.round(cookiesHourly);
-      this.cookiesEachHour.push(cookiesHourly);
-      this.totalCookiesForTheDay += this.cookiesEachHour[i];
-      // console.log('Customer each hour: ', this.customersEachHour[i]);
-      // console.log('Total Cookies for the Day: ', this.totalCookiesForTheDay);
+//     for (var i = 0; i < hours.length; i++) {
+//       // console.log('MAX: ',this.maxCustEacHour);
+//       var difference = this.maxCustEacHour - this.minCustEachHour;
+//       var rndNumber = Math.round((Math.floor(Math.random() * (difference + 1)) + this.minCustEachHour));
+//       // console.log(rndNumber);
+//       this.customersEachHour.push(rndNumber);
+//       var cookiesHourly = this.customersEachHour[i] * this.avgCookiesPerCustomer;
+//       // console.log('hourly cookies', cookiesHourly);
+//       cookiesHourly = Math.round(cookiesHourly);
+//       this.cookiesEachHour.push(cookiesHourly);
+//       this.totalCookiesForTheDay += this.cookiesEachHour[i];
+//       // console.log('Customer each hour: ', this.customersEachHour[i]);
+//       // console.log('Total Cookies for the Day: ', this.totalCookiesForTheDay);
 
-      // now to add the calculated numbers to the list in the DOM
-      //first createElement
-      var liEl = document.createElement('li');
-      //second create text content
-      liEl.textContent = `${hours[i]} ${this.storeName} Cookies per Hour : ${this.cookiesEachHour[i]}`;
-      //now append to the document by using .appendChild(liEl)
-      position.appendChild(liEl);
-    }
-    //createElement
-    var liEl = document.createElement('li');
-    //create text content
-    liEl.textContent = `Total Cookies per Hour : ${this.totalCookiesForTheDay}`;
-    //append to the document by using .appendChild(liEl)
-    position.appendChild(liEl);
+//       // now to add the calculated numbers to the list in the DOM
+//       //first createElement
+//       var liEl = document.createElement('li');
+//       //second create text content
+//       liEl.textContent = `${hours[i]} ${this.storeName} Cookies per Hour : ${this.cookiesEachHour[i]}`;
+//       //now append to the document by using .appendChild(liEl)
+//       position.appendChild(liEl);
+//     }
+//     //createElement
+//     var liEl = document.createElement('li');
+//     //create text content
+//     liEl.textContent = `Total Cookies per Hour : ${this.totalCookiesForTheDay}`;
+//     //append to the document by using .appendChild(liEl)
+//     position.appendChild(liEl);
 
-  }
+//   }
 
-}
+// }
 
-limaShop.render();
+// limaShop.render();
 
 
 
@@ -322,6 +326,7 @@ Shop.prototype.insertTotalElement = function () {
 };
 
 Shop.prototype.render = function () {
+  nameShops.push(this.storeName);
   // make the heading for each shop
   this.insertHeading();
 
@@ -355,10 +360,26 @@ Shop.prototype.render = function () {
   this.insertTotalElement();
 };
 
+
+var seattleShop = new Shop('Seattle', 23, 65, 6.3);
+
+seattleShop.render();
+
+var tokyoShop = new Shop('Tokyo', 3, 24, 1.2);
+
+tokyoShop.render();
+
+var dubaiShop = new Shop('Dubai', 11, 38, 3.7);
+
+dubaiShop.render();
+
 var parisShop = new Shop('Paris', 20, 38, 2.3);
 
 parisShop.render();
 
+var limaShop = new Shop('Lima', 2, 16, 4.6);
+
+limaShop.render();
 
 
 
@@ -385,3 +406,40 @@ parisShop.render();
 // // second for-loop with td elements and then add the cookies sold every hour
 // // append it to the body
 
+//  // make the table with the contents by first making the table row
+
+var table = document.getElementById('table');
+//create the first heading row
+function tableHeading() {
+  var tbRow = document.createElement('tr');
+  // this is the empty first box
+  var thEl = document.createElement('th');
+  thEl.textContent = 'proof of life';
+  tbRow.appendChild(thEl);
+
+  // create loop to enter contents of the array hours and then append it to the table row
+  for (var j = 0; j < hours.length; j++) {
+    var thEl = document.createElement('th');
+    thEl.textContent = hours[j];
+    tbRow.appendChild(thEl);
+  }
+  //append the table row to the table in html
+  table.appendChild(tbRow);
+}
+
+tableHeading();
+
+function tableRows() {
+  // create the table row first
+  var tbRow = document.createElement('tr');
+  // create the first column content with the names of the places
+  var thEl = document.createElement('th');
+  // insert the store Name in first column
+  thEl.textContent = nameShops[0];
+  //append the store name
+  tbRow.appendChild(thEl);
+  table.appendChild(tbRow)
+
+}
+
+tableRows();
