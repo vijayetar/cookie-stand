@@ -266,7 +266,7 @@ limaShop.render();
 
 // copied from the heading so it is a repeat 
 
-var position = document.getElementById('cookiesList');
+//var position = document.getElementById('cookiesList');
 
 
 //find the positon where the new element should be added
@@ -284,13 +284,13 @@ function Shop(storeName, minCustEachHour, maxCustEacHour, avgCookiesPerCustomer)
   this.cookiesEachHour = [];
   this.totalCookiesForTheDay = 0;
 }
+
 // create the prototypes for object Shop
 
 //create randomnumber method associated with Shop
 Shop.prototype.randomNumber = function () {
-  rndNum = Math.floor(Math.random() * (this.maxCustEacHour - this.minCustEachHour + 1) + this.minCustEachHour);
-  return rndNum;
-}
+  return (Math.floor(Math.random() * (this.maxCustEacHour - this.minCustEachHour + 1) + this.minCustEachHour));
+};
 
 // insert heading in the data list
 Shop.prototype.insertHeading = function () {
@@ -298,17 +298,19 @@ Shop.prototype.insertHeading = function () {
   var h2El = document.createElement('h2');
   h2El.textContent = this.storeName;
   position.appendChild(h2El);
-}
+};
 
 // insert list elements in the data list
 Shop.prototype.insertListElement = function () {
   //identify where you want to add th list
-  var liEl = document.createElement('li');
-  liEl.textContent = `${hours[i]} ${this.storeName} Cookies per Hour : ${this.cookiesEachHour[i]}`;
-  //now append to the document by using .appendChild(liEl)
-  position.appendChild(liEl);
+  for (var j = 0; j < hours.length; j++) {
+    var liEl = document.createElement('li');
+    liEl.textContent = `${hours[j]} ${this.storeName} Cookies per Hour : ${this.cookiesEachHour[j]}`;
+    //now append to the document by using .appendChild(liEl)
+    position.appendChild(liEl);
+  }
 
-}
+};
 
 // insert total cookies to the data set
 Shop.prototype.insertTotalElement = function () {
@@ -317,8 +319,7 @@ Shop.prototype.insertTotalElement = function () {
   liEl.textContent = `Total Cookies per Hour : ${this.totalCookiesForTheDay}`;
   //append to the document by using .appendChild(liEl)
   position.appendChild(liEl);
-
-}
+};
 
 Shop.prototype.render = function () {
   // make the heading for each shop
@@ -326,29 +327,35 @@ Shop.prototype.render = function () {
 
   // make the loop for every hour within the array
   for (var i = 0; i < hours.length; i++) {
-    // generate the random number for the first hour
-    this.randomNumber();
-    console.log('hi it works and this is the random number', i, rndNum);
+    //   // generate the random number for the first hour
+    //   // push random number into the array for customers every hour
 
-    // push random number into the array for customers every hour
-    this.customersEachHour.push(rndNum);
+    this.customersEachHour.push(this.randomNumber());
+    console.log('this is customers each hour', this.customersEachHour[i]);
 
-    // generate cookies every hour by using the random number of customers every hour and then push it into the array for cookies each hour
+    // // generate cookies every hour by using the random number of customers every hour
     var cookiesHourly = this.customersEachHour[i] * this.avgCookiesPerCustomer;
+
     cookiesHourly = Math.round(cookiesHourly);
+
+    // // and then push it into the array for cookies each hour
+
     this.cookiesEachHour.push(cookiesHourly);
-    console.log('cookies each hour', this.cookiesEachHour[i]);
+    //console.log('cookies each hour', this.cookiesEachHour[i]);
 
-    //generate the total cookies for the shop
+    // // generate the total cookies for the shop
     this.totalCookiesForTheDay += this.cookiesEachHour[i];
-    console.log('this is the total cookies', this.totalCookiesForTheDay);
-
+    //console.log('this is the total cookies', this.totalCookiesForTheDay);
 
   }
-  //console.log('this is the array now', this.customersEachHour);
-}
 
-var parisShop = new Shop("Paris", 20, 38, 2.3);
+  //insert list elements with the cookies for the hour 
+  this.insertListElement();
+  // insert the total cookies for the day into the list
+  this.insertTotalElement();
+};
+
+var parisShop = new Shop('Paris', 20, 38, 2.3);
 
 parisShop.render();
 
