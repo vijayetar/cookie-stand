@@ -39,6 +39,11 @@ h2 {
   z-index: 1;
 }
 
+.table {
+  width: 75%;
+  height: 45em;
+}
+
 div {
   width: 100%;
   height: auto;
@@ -49,6 +54,15 @@ div {
   text-indent: 5em;
   overflow: scroll;
  }
+
+.navbar> p {
+float: right;
+display: inline-block;
+margin-left: 0.5em;
+color: red;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+font-size: 1.5em;
+}
 
 footer{
   background-image: url("../images/salmon_blur_crop.gif");
@@ -66,17 +80,17 @@ footer{
   position: bottom;
 }
 
-a:link {
-  color: white;
+div> .navbar> p> a:link {
+  color: red;
   text-decoration: none;
 }
-a:visited {
+div> .navbar> p> a:visited {
   color: white;
 }
-a:hover {
+div> .navbar> p> a:hover {
   color:#AD5334;
-  /* text-decoration: none; */
+  text-decoration: none;
 }
-a:active {
+div> .navbar> p> a:active {
   color:  #2B2D28;
 }
