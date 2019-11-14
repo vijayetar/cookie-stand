@@ -7,7 +7,7 @@ body {
 h1 {
   margin: 0px auto;
   width: 100%;
-  height: 3rem;
+  height: auto;
   padding: 1em;
   background-color: 	rgba(201, 178, 117, 1);
   background-image: linear-gradient(45deg,rgba(204, 193, 164,1),#A95833);
@@ -15,14 +15,14 @@ h1 {
   font-size: 3em;
   font-weight: bolder;
   color: rgb(46, 142, 202);
-  text-transform: capitalize;
-  text-shadow: 3px 3px 7px whitesmoke;
+  text-transform: uppercase;
+  text-shadow: -3px -3px 7px rgb(228, 221, 221);
   text-align: start;
   vertical-align: text-top;
   position: fixed;
   z-index: 1;
-
 }
+
 h2 {
   margin: 1em 0px 1em 0px;
   width: 100%;
@@ -39,9 +39,14 @@ h2 {
   z-index: 1;
 }
 
-.list {
+.table {
+  width: 75%;
+  height: 45em;
+}
+
+div {
   width: 100%;
-  height: 60em;
+  height: auto;
   padding: 2em auto;
   margin-top: 2em;
   margin-bottom: 2em;
@@ -49,6 +54,15 @@ h2 {
   text-indent: 5em;
   overflow: scroll;
  }
+
+.navbar> p {
+float: right;
+display: inline-block;
+margin-left: 0.5em;
+color: red;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+font-size: 1.5em;
+}
 
 footer{
   background-image: url("../images/salmon_blur_crop.gif");
@@ -62,20 +76,21 @@ footer{
   color: #2E2D28;
   font-size: 2rem;
   text-transform: lowercase;
+  text-shadow: 1px 1px 4px black;
   position: bottom;
 }
 
-a:link {
-  color: white;
+div> .navbar> p> a:link {
+  color: red;
   text-decoration: none;
 }
-a:visited {
+div> .navbar> p> a:visited {
   color: white;
 }
-a:hover {
+div> .navbar> p> a:hover {
   color:#AD5334;
-  /* text-decoration: none; */
+  text-decoration: none;
 }
-a:active {
+div> .navbar> p> a:active {
   color:  #2B2D28;
 }
