@@ -4,24 +4,14 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 // find the positon where the new element should be added
 var position = document.getElementById('cookiesList');
 
+//
+// global variables
+//
 var nameShop = [];
 
 var sumTotalatEachHour = 0;
 
-
-// // // // 11122019 - attempted to make objects within an array, and then call each object through for loop to create more objects and arrays. However the render function does not work
-
-// // // // var nameShop = [{storeName: 'Seattle', minCustEachHour: 23, maxCustEacHour: 65, avgCookiesPerCustomer: 6.3 }, { storeName: 'Tokyo', minCustEachHour: 3, maxCustEacHour: 24, avgCookiesPerCustomer: 1.2 }
-// // // // ]
-
-// // // // function listShop() {
-// // // //   for (var k = 0; k < nameShop.length; k++) {
-// // // //     console.log('nameShop is ', nameShop[k].storeName);
-// // // //     var placeShops = new Shop(nameShop[k].storeName, nameShop[k].minCustEachHour, nameShop[k].maxCustEacHour, nameShop[k].avgCookiesPerCustomer);
-// // // //     // console.log('I am crazy', placeShops.storeName);
-// // // //   }
-// // // // }
-// // // // listShop();
+var sumTotalsatEachShop = 0;
 
 // // // Attempt to change to function
 //
@@ -124,31 +114,7 @@ var parisShop = new Shop('Paris', 20, 38, 2.3);
 var limaShop = new Shop('Lima', 2, 16, 4.6);
 // limaShop.renderList();
 
-
-// // Making the table with the above contents
-// //array of time for top row
-// //function of header
-
-// //var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
-
-// //function header () {}
-// //create element tr
-// //create element th
-// //add text content as empty string as the first of the columns
-// //then we have to append it to the row
-
-// //next create a for loop for each of the hours in the array
-// // in the loop also append to the tr element the th
-
-// //outside of the loop attach the row to the body
-
-// //function makeDataRow() {}
-// //first for-loop create tr, and then th element, and then go through the names of the cities as an array
-// // second for-loop with td elements and then add the cookies sold every hour
-// // append it to the body
-
-// //  // 11122019 make the table with the contents by first making the table row
-
+// identify the table
 var table = document.getElementById('table');
 
 //
@@ -223,24 +189,30 @@ function tableHeadingTotals() {
   for (var j = 0; j < hours.length; j++) {
     // assign the total variable to 0 at each hour
     sumTotalatEachHour = 0;
+
     for (var k = 0; k < nameShop.length; k++) {
       console.log('this is j', j, 'this is my k', k);
       console.log('this is the number being added', nameShop[k].cookiesEachHour[j]);
       sumTotalatEachHour += nameShop[k].cookiesEachHour[j];
       console.log('this is the sumtotal', sumTotalatEachHour);
     }
+    // make the last row and add the sum totals for each hour
     thEl = document.createElement('th');
     thEl.textContent = sumTotalatEachHour;
     tbRow.appendChild(thEl);
 
-    // // make the last column heading for the daily location totals
-    // var thEl = document.createElement('th');
-    // thEl.textContent = 'daily location totals';
-    // tbRow.appendChild(thEl);
-
-
-    //append the table row to the table in html
   }
+
+  for (var k = 0; k < nameShop.length; k++) {
+    sumTotalsatEachShop += nameShop[k].totalCookiesForTheDay;
+    console.log('this is the total', sumTotalsatEachShop);
+  }
+  // make the last row and add the totals for each shop
+  thEl = document.createElement('th');
+  thEl.textContent = sumTotalsatEachShop;
+  tbRow.appendChild(thEl);
+
+  //append the table row to the table in html
   table.appendChild(tbRow);
 
 }
@@ -277,10 +249,6 @@ Shop.prototype.renderNewTable = function () {
 
   }
 
-  //insert list elements with the cookies for the hour 
-  // this.insertListElement();
-  // insert the total cookies for the day into the list
-  // this.insertTotalElement();
 
   // insert the data into the table row
   this.tableRowData();
@@ -297,7 +265,7 @@ parisShop.renderNewTable();
 limaShop.renderNewTable();
 tableHeadingTotals();
 
-console.log('this is my MEGA ARRAY', nameShop);
+// console.log('this is my MEGA ARRAY', nameShop);
 
 // console.log(nameShop[4].customersEachHour[5]);
 
