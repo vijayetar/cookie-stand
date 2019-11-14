@@ -55,42 +55,42 @@ div {
   overflow: scroll;
  }
 
+ 
+ footer{
+   background-image: url("../images/salmon_blur_crop.gif");
+   background-color:#6E6353;
+   width: 100%;
+   height: 35%;
+   padding: 0.3em;
+   font-family: 'Gloria Hallelujah', cursive;
+   font-display: fallback;
+   text-indent: 1em;
+   color: #2E2D28;
+   font-size: 2rem;
+   text-transform: lowercase;
+   text-shadow: 1px 1px 4px black;
+   position: bottom;
+  }
 .navbar> p {
-float: right;
-display: inline-block;
-margin-left: 0.5em;
-color: red;
-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-font-size: 1.5em;
-}
-
-footer{
-  background-image: url("../images/salmon_blur_crop.gif");
-  background-color:#6E6353;
-  width: 100%;
-  height: 35%;
-  padding: 0.3em;
-  font-family: 'Gloria Hallelujah', cursive;
-  font-display: fallback;
-  text-indent: 1em;
-  color: #2E2D28;
-  font-size: 2rem;
-  text-transform: lowercase;
-  text-shadow: 1px 1px 4px black;
-  position: bottom;
-}
-
+  float: right;
+  margin-left: 1px;
+  color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 1em;
+  }
+  
 div> .navbar> p> a:link {
-  color: red;
+  color: white;
   text-decoration: none;
 }
 div> .navbar> p> a:visited {
   color: white;
+  text-decoration: none;
 }
 div> .navbar> p> a:hover {
   color:#AD5334;
   text-decoration: none;
 }
 div> .navbar> p> a:active {
-  color:  #2B2D28;
+  color:  white;
 }
