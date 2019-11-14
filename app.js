@@ -4,7 +4,10 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 // find the positon where the new element should be added
 var position = document.getElementById('cookiesList');
 
-var nameShop = ['Seattle', 'Tokyo', 'Dubai', 'Paris', 'Lima'];
+var nameShop = [];
+
+var sumTotalatEachHour = 0;
+
 
 // // // // 11122019 - attempted to make objects within an array, and then call each object through for loop to create more objects and arrays. However the render function does not work
 
@@ -25,7 +28,6 @@ var nameShop = ['Seattle', 'Tokyo', 'Dubai', 'Paris', 'Lima'];
 // Create the object constructor notation to create multiple objects
 //
 function Shop(storeName, minCustEachHour, maxCustEacHour, avgCookiesPerCustomer) {
-
   this.storeName = storeName;
   this.minCustEachHour = minCustEachHour;
   this.maxCustEacHour = maxCustEacHour;
@@ -33,6 +35,7 @@ function Shop(storeName, minCustEachHour, maxCustEacHour, avgCookiesPerCustomer)
   this.customersEachHour = [];
   this.cookiesEachHour = [];
   this.totalCookiesForTheDay = 0;
+  nameShop.push(this);
 }
 
 //
@@ -216,16 +219,19 @@ function tableHeadingTotals() {
   thEl.textContent = 'Totals';
   tbRow.appendChild(thEl);
 
-  // create loop to enter sum of the cookies at each hour and then append it to the table row
-  var sumTotalatEachHour = 0;
-  for (var k = 0; k < nameShop.length; k++) {
-
-    for (var j = 0; j < hours.length; j++) {
-      sumTotalatEachHour += 1000;
-      var thEl = document.createElement('th');
-      thEl.textContent = sumTotalatEachHour;
-      tbRow.appendChild(thEl);
+  // create first loop to find cookies at each hour 
+  for (var j = 0; j < hours.length; j++) {
+    // assign the total variable to 0 at each hour
+    sumTotalatEachHour = 0;
+    for (var k = 0; k < nameShop.length; k++) {
+      console.log('this is j', j, 'this is my k', k);
+      console.log('this is the number being added', nameShop[k].cookiesEachHour[j]);
+      sumTotalatEachHour += nameShop[k].cookiesEachHour[j];
+      console.log('this is the sumtotal', sumTotalatEachHour);
     }
+    thEl = document.createElement('th');
+    thEl.textContent = sumTotalatEachHour;
+    tbRow.appendChild(thEl);
 
     // // make the last column heading for the daily location totals
     // var thEl = document.createElement('th');
@@ -234,8 +240,8 @@ function tableHeadingTotals() {
 
 
     //append the table row to the table in html
-    table.appendChild(tbRow);
   }
+  table.appendChild(tbRow);
 
 }
 
@@ -263,7 +269,7 @@ Shop.prototype.renderNewTable = function () {
 
     this.cookiesEachHour.push(cookiesHourly);
 
-    console.log('name of shop',this.storeName, 'cookies each hour', this.cookiesEachHour[i]);
+    console.log('name of shop', this.storeName, 'cookies each hour', this.cookiesEachHour[i]);
 
     // // generate the total cookies for the shop
     this.totalCookiesForTheDay += this.cookiesEachHour[i];
@@ -290,5 +296,9 @@ dubaiShop.renderNewTable();
 parisShop.renderNewTable();
 limaShop.renderNewTable();
 tableHeadingTotals();
+
+console.log('this is my MEGA ARRAY', nameShop);
+
+// console.log(nameShop[4].customersEachHour[5]);
 
 
