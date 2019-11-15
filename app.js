@@ -124,7 +124,7 @@ function tableHeadingHours() {
     var tbRow = document.createElement('tr');
     // this is the empty first box
     var thEl = document.createElement('th');
-    thEl.textContent = 'proof of life';
+    thEl.textContent = '';
     tbRow.appendChild(thEl);
 
     // create loop to enter contents of the array hours and then append it to the table row
@@ -299,7 +299,7 @@ function table2HeadingHours() {
     var tbRow = document.createElement('tr');
     // this is the empty first box
     var thEl = document.createElement('th');
-    thEl.textContent = 'proof of life';
+    thEl.textContent = ' ';
     tbRow.appendChild(thEl);
 
     // create loop to enter contents of the array hours and then append it to the table row
@@ -308,12 +308,6 @@ function table2HeadingHours() {
         thEl.textContent = hours[j];
         tbRow.appendChild(thEl);
     }
-
-    // make the last column heading for the daily location totals
-    thEl = document.createElement('th');
-    thEl.textContent = 'daily location totals';
-    tbRow.appendChild(thEl);
-
 
     //append the table row to the table in html
     tablePercent.appendChild(tbRow);
@@ -341,10 +335,6 @@ Shop.prototype.table2RowData = function() {
         tdEl.textContent = this.percentCustperHour[j];
         tbRow.appendChild(tdEl);
     }
-    // add data for the total cookies for the day
-    thEl = document.createElement('th');
-    thEl.textContent = 'wedidit';
-    tbRow.appendChild(thEl);
 
     //append row to the table
     tablePercent.appendChild(tbRow);

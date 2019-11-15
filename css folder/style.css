@@ -44,7 +44,7 @@ h2 {
 }
 
 div {
-    width: 100%;
+    width: 90%;
     height: auto;
     padding: 2em auto;
     margin-top: 2em;
@@ -71,30 +71,31 @@ footer {
     height: 35%;
     padding: 0.3em;
     font-family: 'Gloria Hallelujah', cursive;
-    font-display: fallback;
+    /* font-display: fallback; */
     text-indent: 1em;
     color: white;
     font-size: 2rem;
     text-transform: lowercase;
-    text-shadow: 1px 1px 4px black;
+    /* text-shadow: 1px 1px 4px black; */
     position: bottom;
 }
 
-.navbar>ul {
+.navbar {
     display: inline-block;
-    float: right;
+    right: auto;
     margin-left: 1px;
     color: white;
     font-family: 'Gloria Hallelujah', cursive;
     font-size: 1em;
 }
 
-a {
+a :active {
     color: whitesmoke;
     text-decoration: none;
 }
 
-a: hover {
+a:hover {
+    color: white;
     text-decoration: underline;
 }
 
@@ -107,4 +108,23 @@ a: hover {
     z-index: 10;
     text-decoration: none;
     border-radius: 50%;
+}
+
+div {
+    width: 70%;
+    align-content: center;
+}
+
+th,
+td {
+    padding: 1px 2px 2px 2px;
+    border: 1px solid black;
+    align-content: space-between;
+}
+
+th {
+    letter-spacing: 0.1em;
+    font-size: 1em;
+    font-family: fantasy;
+    font-weight: 900;
 }
