@@ -110,16 +110,19 @@ a:hover {
     border-radius: 50%;
 }
 
-div {
+#table,
+#tablePercent {
     width: 70%;
     align-content: center;
+    /* border-collapse: collapse; */
+    border-spacing: 1px 2px;
 }
 
 th,
 td {
     padding: 1px 2px 2px 2px;
-    border: 1px solid black;
-    align-content: space-between;
+    border: 0.5px solid black;
+    align-content: bottom;
 }
 
 th {
