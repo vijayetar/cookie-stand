@@ -1,21 +1,25 @@
+'use strict';
+
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 // find the positon where the new element should be added
 var position = document.getElementById('cookiesList');
 
-//
-// global variables
-//
 var nameShop = [];
 
 var sumTotalatEachHour = 0;
 
 var sumTotalsatEachShop = 0;
 
-// // // Attempt to change to function
+// identify the table
+var table = document.getElementById('table');
+
+
 //
 // Create the object constructor notation to create multiple objects
 //
+// tableHeadingHours();
+
 function Shop(storeName, minCustEachHour, maxCustEacHour, avgCookiesPerCustomer) {
   this.storeName = storeName;
   this.minCustEachHour = minCustEachHour;
@@ -26,6 +30,8 @@ function Shop(storeName, minCustEachHour, maxCustEacHour, avgCookiesPerCustomer)
   this.totalCookiesForTheDay = 0;
   this.percentCustperHour = [];
   nameShop.push(this);
+  // this.tableRowData();
+  // this.renderNewTable();
 }
 
 //
@@ -38,84 +44,68 @@ Shop.prototype.randomNumber = function() {
 
 // // insert heading in the data List
 Shop.prototype.insertHeading = function() {
-  // identify where you want to add the list and name the list
   var h2El = document.createElement('h2');
   h2El.textContent = this.storeName;
   position.appendChild(h2El);
 };
 
 // //insert list elements in the data List
-Shop.prototype.insertListElement = function() {
-  //identify where you want to add th list
-  for (var j = 0; j < hours.length; j++) {
-    var liEl = document.createElement('li');
-    liEl.textContent = `${hours[j]} ${this.storeName} Cookies per Hour : ${this.cookiesEachHour[j]}`;
-    //now append to the document by using .appendChild(liEl)
-    position.appendChild(liEl);
-  }
-};
+// Shop.prototype.insertListElement = function() {
 
-// insert total cookies to the List
-Shop.prototype.insertTotalElement = function() {
-  var liEl = document.createElement('li');
-  //create text content
-  liEl.textContent = `Total Cookies per Hour : ${this.totalCookiesForTheDay}`;
-  //append to the document by using .appendChild(liEl)
-  position.appendChild(liEl);
-};
+//   for (var j = 0; j < hours.length; j++) {
+//     var liEl = document.createElement('li');
+//     liEl.textContent = `${hours[j]} ${this.storeName} Cookies per Hour : ${this.cookiesEachHour[j]}`;
+//     position.appendChild(liEl);
+//   }
+// };
 
-Shop.prototype.renderList = function() {
-  // make the heading for each shop
-  this.insertHeading();
+// // insert total cookies to the List
+// Shop.prototype.insertTotalElement = function() {
+//   var liEl = document.createElement('li');
+//   liEl.textContent = `Total Cookies per Hour : ${this.totalCookiesForTheDay}`;
+//   position.appendChild(liEl);
+// };
 
-  // make the loop for every hour within the array
-  for (var i = 0; i < hours.length; i++) {
-    //   // generate the random number for the first hour
-    //   // push random number into the array for customers every hour
+// Shop.prototype.renderList = function() {
+//   // make the heading for each shop
+//   this.insertHeading();
 
-    this.customersEachHour.push(this.randomNumber());
-    console.log('this is customers each hour', this.customersEachHour[i]);
+//   // make the loop for every hour within the array
+//   for (var i = 0; i < hours.length; i++) {
 
-    // // generate cookies every hour by using the random number of customers every hour
-    var cookiesHourly = this.customersEachHour[i] * this.avgCookiesPerCustomer;
+//     this.customersEachHour.push(this.randomNumber());
+//     console.log('this is customers each hour', this.customersEachHour[i]);
 
-    cookiesHourly = Math.round(cookiesHourly);
+//     var cookiesHourly = this.customersEachHour[i] * this.avgCookiesPerCustomer;
+//     cookiesHourly = Math.round(cookiesHourly);
 
-    // // and then push it into the array for cookies each hour
+//     // // and then push it into the array for cookies each hour
+//     this.cookiesEachHour.push(cookiesHourly);
+//     //console.log('cookies each hour', this.cookiesEachHour[i]);
 
-    this.cookiesEachHour.push(cookiesHourly);
-    //console.log('cookies each hour', this.cookiesEachHour[i]);
+//     // // generate the total cookies for the shop
+//     this.totalCookiesForTheDay += this.cookiesEachHour[i];
+//     //console.log('this is the total cookies', this.totalCookiesForTheDay);
 
-    // // generate the total cookies for the shop
-    this.totalCookiesForTheDay += this.cookiesEachHour[i];
-    //console.log('this is the total cookies', this.totalCookiesForTheDay);
+//   }
 
-  }
-
-  //insert list elements with the cookies for the hour 
-  this.insertListElement();
-  // insert the total cookies for the day into the list
-  this.insertTotalElement();
-};
+//   //insert list elements with the cookies for the hour 
+//   this.insertListElement();
+//   // insert the total cookies for the day into the list
+//   this.insertTotalElement();
+// };
 
 
 var seattleShop = new Shop('Seattle', 23, 65, 6.3);
-// seattleShop.renderList();
 
 var tokyoShop = new Shop('Tokyo', 3, 24, 1.2);
-// tokyoShop.renderList();
 
 var dubaiShop = new Shop('Dubai', 11, 38, 3.7);
-// dubaiShop.renderList();
 
 var parisShop = new Shop('Paris', 20, 38, 2.3);
-// parisShop.renderList();
 
 var limaShop = new Shop('Lima', 2, 16, 4.6);
-// limaShop.renderList();
 
-// identify the table
-var table = document.getElementById('table');
 
 //
 //create function for the first heading row
@@ -178,7 +168,7 @@ Shop.prototype.tableRowData = function() {
 //
 //create the last table row with the total cookies
 //
-function tableHeadingTotals() {
+function tableFooterTotals() {
   var tbRow = document.createElement('tr');
   // this is the empty first box
   var thEl = document.createElement('th');
@@ -221,9 +211,6 @@ function tableHeadingTotals() {
 // create a new prototype to both do the math and add it into the table data
 //
 Shop.prototype.renderNewTable = function() {
-  // heading for the table is a separate function called independent of the method, called tableHeadingHours
-
-  // make the loop for every hour within the array and make your calculations for the hour
 
   for (var i = 0; i < hours.length; i++) {
     //   // generate the random number for the first hour
@@ -241,11 +228,12 @@ Shop.prototype.renderNewTable = function() {
 
     this.cookiesEachHour.push(cookiesHourly);
 
-    console.log('name of shop', this.storeName, 'cookies each hour', this.cookiesEachHour[i]);
+    // console.log('name of shop', this.storeName, 'cookies each hour', this.cookiesEachHour[i]);
 
     // // generate the total cookies for the shop
     this.totalCookiesForTheDay += this.cookiesEachHour[i];
-    console.log('shopName', this.storeName, 'this is the total cookies', this.totalCookiesForTheDay);
+    // console.log('shopName', this.storeName, 'this is the total cookies', this.totalCookiesForTheDay);
+    console.log('this new style is working!!!');
 
   }
 
@@ -263,7 +251,7 @@ tokyoShop.renderNewTable();
 dubaiShop.renderNewTable();
 parisShop.renderNewTable();
 limaShop.renderNewTable();
-tableHeadingTotals();
+tableFooterTotals();
 
 
 console.log('this is my MEGA ARRAY', nameShop);
@@ -345,3 +333,4 @@ tokyoShop.table2RowData();
 dubaiShop.table2RowData();
 parisShop.table2RowData();
 limaShop.table2RowData();
+
