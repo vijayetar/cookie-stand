@@ -85,6 +85,7 @@ input[type="submit"] {
     border-radius: 5px;
     padding: 3px;
     margin-top: 10px;
+    
 }
 input[type="submit"]:hover {
     border:1px solid black;

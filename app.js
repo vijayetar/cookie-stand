@@ -6,9 +6,21 @@ userForm.addEventListener('submit',handleSubmit, false);
 function handleSubmit(event) {
   event.preventDefault();
   var name = event.target.inputElementName.value; 
-  var age = event.target.inputElementAge.value;
-  console.log('this is name', name, 
-    'this is age:', age);
+  var minC = event.target.inputElementMinCust.value;
+  var maxC = event.target.inputElementMaxCust.value;
+  var avgC = event.target.inputElementAvgCookies.value;
+  minC = parseInt(minC);
+  maxC = parseInt(maxC);
+  avgC = parseInt(avgC);
+
+  // console.log('this is the info:', name, minC, maxC, avgC);
+  new Shop(name, minC, maxC, avgC);
+  // console.log('my MegaArray', nameShop);
+
+  name = null;
+  minC = null;
+  maxC = null;
+  avgC = null;
 }
 
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
@@ -256,7 +268,6 @@ Shop.prototype.table2RowData = function() {
 
 tableHeadingHours();
 table2HeadingHours();
-
 var seattleShop = new Shop('Seattle', 23, 65, 6.3);
 var tokyoShop = new Shop('Tokyo', 3, 24, 1.2);
 var dubaiShop = new Shop('Dubai', 11, 38, 3.7);
