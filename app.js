@@ -1,3 +1,5 @@
+'use strict';
+
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 // find the positon where the new element should be added
@@ -331,3 +333,4 @@ tokyoShop.table2RowData();
 dubaiShop.table2RowData();
 parisShop.table2RowData();
 limaShop.table2RowData();
+
