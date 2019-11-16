@@ -1,7 +1,5 @@
 'use strict';
 
-console.log('proof of life to test out forms');
-
 var userForm = document.getElementById('user-form');
 userForm.addEventListener('submit',handleSubmit, false);
 
