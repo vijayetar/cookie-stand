@@ -15,16 +15,12 @@ var sumTotalsatEachShop = 0;
 var table = document.getElementById('table');
 
 // variables to determine the percentage of customer
-var maxCust = 0;
 var percentCust = 0;
 var tablePercent = document.getElementById('tablePercent');
-
-
 
 //
 // Create the object constructor notation to create multiple objects
 //
-
 function Shop(storeName, minCustEachHour, maxCustEacHour, avgCookiesPerCustomer) {
   this.storeName = storeName;
   this.minCustEachHour = minCustEachHour;
@@ -68,12 +64,10 @@ function tableHeadingHours() {
     thEl.textContent = hours[j];
     tbRow.appendChild(thEl);
   }
-
   // make the last column heading for the daily location totals
   thEl = document.createElement('th');
   thEl.textContent = 'daily location totals';
   tbRow.appendChild(thEl);
-
 
   //append the table row to the table in html
   table.appendChild(tbRow);
@@ -133,7 +127,6 @@ function tableFooterTotals() {
     thEl = document.createElement('th');
     thEl.textContent = sumTotalatEachHour;
     tbRow.appendChild(thEl);
-
   }
 
   for (var k = 0; k < nameShop.length; k++) {
@@ -147,7 +140,6 @@ function tableFooterTotals() {
 
   //append the table row to the table in html
   table.appendChild(tbRow);
-
 }
 
 //
@@ -190,7 +182,7 @@ Shop.prototype.getCustpercentage = function() {
     // console.log('this is the percent per hour',percentCust);
     this.percentCustperHour.push(percentCust);
   }
-}
+};
 
 
 function table2HeadingHours() {
@@ -210,12 +202,9 @@ function table2HeadingHours() {
   tablePercent.appendChild(tbRow);
 }
 
-// console.log('this is my MEGA ARRAY', nameShop);
 
 // //
 // //find the maximum in the array Customers each hour to get teh percentages
-// /
-
 //
 // create prototype with the contents of the shop rows
 //
@@ -238,7 +227,6 @@ Shop.prototype.table2RowData = function() {
     tdEl.textContent = this.percentCustperHour[j];
     tbRow.appendChild(tdEl);
   }
-
   //append row to the table
   tablePercent.appendChild(tbRow);
 };
@@ -252,6 +240,8 @@ var parisShop = new Shop('Paris', 20, 38, 2.3);
 var limaShop = new Shop('Lima', 2, 16, 4.6);
 tableFooterTotals();
 
+
+//using the submit form and adding the contents into the table 1 and table 2
 var userForm = document.getElementById('user-form');
 userForm.addEventListener('submit',handleSubmit, false);
 
