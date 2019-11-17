@@ -14,12 +14,13 @@ var sumTotalsatEachShop = 0;
 // identify the table
 var table = document.getElementById('table');
 
+// variables to determine the percentage of customer
+var percentCust = 0;
+var tablePercent = document.getElementById('tablePercent');
 
 //
 // Create the object constructor notation to create multiple objects
 //
-// tableHeadingHours();
-
 function Shop(storeName, minCustEachHour, maxCustEacHour, avgCookiesPerCustomer) {
   this.storeName = storeName;
   this.minCustEachHour = minCustEachHour;
@@ -30,8 +31,8 @@ function Shop(storeName, minCustEachHour, maxCustEacHour, avgCookiesPerCustomer)
   this.totalCookiesForTheDay = 0;
   this.percentCustperHour = [];
   nameShop.push(this);
-  // this.tableRowData();
-  // this.renderNewTable();
+  this.renderNewTable();
+  this.table2RowData();
 }
 
 //
@@ -49,70 +50,10 @@ Shop.prototype.insertHeading = function() {
   position.appendChild(h2El);
 };
 
-// //insert list elements in the data List
-// Shop.prototype.insertListElement = function() {
-
-//   for (var j = 0; j < hours.length; j++) {
-//     var liEl = document.createElement('li');
-//     liEl.textContent = `${hours[j]} ${this.storeName} Cookies per Hour : ${this.cookiesEachHour[j]}`;
-//     position.appendChild(liEl);
-//   }
-// };
-
-// // insert total cookies to the List
-// Shop.prototype.insertTotalElement = function() {
-//   var liEl = document.createElement('li');
-//   liEl.textContent = `Total Cookies per Hour : ${this.totalCookiesForTheDay}`;
-//   position.appendChild(liEl);
-// };
-
-// Shop.prototype.renderList = function() {
-//   // make the heading for each shop
-//   this.insertHeading();
-
-//   // make the loop for every hour within the array
-//   for (var i = 0; i < hours.length; i++) {
-
-//     this.customersEachHour.push(this.randomNumber());
-//     console.log('this is customers each hour', this.customersEachHour[i]);
-
-//     var cookiesHourly = this.customersEachHour[i] * this.avgCookiesPerCustomer;
-//     cookiesHourly = Math.round(cookiesHourly);
-
-//     // // and then push it into the array for cookies each hour
-//     this.cookiesEachHour.push(cookiesHourly);
-//     //console.log('cookies each hour', this.cookiesEachHour[i]);
-
-//     // // generate the total cookies for the shop
-//     this.totalCookiesForTheDay += this.cookiesEachHour[i];
-//     //console.log('this is the total cookies', this.totalCookiesForTheDay);
-
-//   }
-
-//   //insert list elements with the cookies for the hour 
-//   this.insertListElement();
-//   // insert the total cookies for the day into the list
-//   this.insertTotalElement();
-// };
-
-
-var seattleShop = new Shop('Seattle', 23, 65, 6.3);
-
-var tokyoShop = new Shop('Tokyo', 3, 24, 1.2);
-
-var dubaiShop = new Shop('Dubai', 11, 38, 3.7);
-
-var parisShop = new Shop('Paris', 20, 38, 2.3);
-
-var limaShop = new Shop('Lima', 2, 16, 4.6);
-
-
-//
 //create function for the first heading row
 //
 function tableHeadingHours() {
   var tbRow = document.createElement('tr');
-  // this is the empty first box
   var thEl = document.createElement('th');
   thEl.textContent = '';
   tbRow.appendChild(thEl);
@@ -123,18 +64,14 @@ function tableHeadingHours() {
     thEl.textContent = hours[j];
     tbRow.appendChild(thEl);
   }
-
   // make the last column heading for the daily location totals
   thEl = document.createElement('th');
   thEl.textContent = 'daily location totals';
   tbRow.appendChild(thEl);
 
-
   //append the table row to the table in html
   table.appendChild(tbRow);
 }
-
-tableHeadingHours();
 
 //
 // create prototype with the contents of the shop rows
@@ -181,21 +118,20 @@ function tableFooterTotals() {
     sumTotalatEachHour = 0;
 
     for (var k = 0; k < nameShop.length; k++) {
-      console.log('this is j', j, 'this is my k', k);
-      console.log('this is the number being added', nameShop[k].cookiesEachHour[j]);
+      // console.log('this is j', j, 'this is my k', k);
+      // console.log('this is the number being added', nameShop[k].cookiesEachHour[j]);
       sumTotalatEachHour += nameShop[k].cookiesEachHour[j];
-      console.log('this is the sumtotal', sumTotalatEachHour);
+      // console.log('this is the sumtotal', sumTotalatEachHour);
     }
     // make the last row and add the sum totals for each hour
     thEl = document.createElement('th');
     thEl.textContent = sumTotalatEachHour;
     tbRow.appendChild(thEl);
-
   }
 
   for (var k = 0; k < nameShop.length; k++) {
     sumTotalsatEachShop += nameShop[k].totalCookiesForTheDay;
-    console.log('this is the total', sumTotalsatEachShop);
+    // console.log('this is the total', sumTotalsatEachShop);
   }
   // make the last row and add the totals for each shop
   thEl = document.createElement('th');
@@ -204,7 +140,6 @@ function tableFooterTotals() {
 
   //append the table row to the table in html
   table.appendChild(tbRow);
-
 }
 
 //
@@ -223,9 +158,7 @@ Shop.prototype.renderNewTable = function() {
     var cookiesHourly = this.customersEachHour[i] * this.avgCookiesPerCustomer;
 
     cookiesHourly = Math.round(cookiesHourly);
-
     // // and then push it into the array for cookies each hour
-
     this.cookiesEachHour.push(cookiesHourly);
 
     // console.log('name of shop', this.storeName, 'cookies each hour', this.cookiesEachHour[i]);
@@ -233,55 +166,24 @@ Shop.prototype.renderNewTable = function() {
     // // generate the total cookies for the shop
     this.totalCookiesForTheDay += this.cookiesEachHour[i];
     // console.log('shopName', this.storeName, 'this is the total cookies', this.totalCookiesForTheDay);
-    console.log('this new style is working!!!');
+    // console.log('this new style is working!!!');
 
   }
-
-
   // insert the data into the table row
   this.tableRowData();
-
 };
 
-//
-// call out the new methods
-//
-seattleShop.renderNewTable();
-tokyoShop.renderNewTable();
-dubaiShop.renderNewTable();
-parisShop.renderNewTable();
-limaShop.renderNewTable();
-tableFooterTotals();
+Shop.prototype.getCustpercentage = function() {
+  for (var i = 0; i < hours.length; i++) {
 
-
-console.log('this is my MEGA ARRAY', nameShop);
-
-//
-//find the maximum in the array Customers each hour to get teh percentages
-//
-var maxCust = 0;
-var percentCustperHour = 0;
-
-function getCustpercentage() {
-  for (var j = 0; j < nameShop.length; j++) {
-    console.log('this is name of shop', nameShop[j]);
-
-    for (var i = 0; i < hours.length; i++) {
-
-      percentCustperHour = (nameShop[j].customersEachHour[i] / nameShop[j].maxCustEacHour);
-      // this.percentCustperHour = Math.round(this.percentCustperHour);
-      percentCustperHour = percentCustperHour.toFixed(1);
-      console.log('this is the percent per hour',
-        percentCustperHour);
-      nameShop[j].percentCustperHour.push(percentCustperHour);
-    }
-    console.log(nameShop[j].percentCustperHour)
+    percentCust = (this.customersEachHour[i] / this.maxCustEacHour);
+    // this.percentCustperHour = Math.round(this.percentCustperHour);
+    percentCust = percentCust.toFixed(1);
+    // console.log('this is the percent per hour',percentCust);
+    this.percentCustperHour.push(percentCust);
   }
 };
 
-getCustpercentage();
-
-var tablePercent = document.getElementById('tablePercent');
 
 function table2HeadingHours() {
   var tbRow = document.createElement('tr');
@@ -296,13 +198,13 @@ function table2HeadingHours() {
     thEl.textContent = hours[j];
     tbRow.appendChild(thEl);
   }
-
   //append the table row to the table in html
   tablePercent.appendChild(tbRow);
 }
 
-table2HeadingHours();
 
+// //
+// //find the maximum in the array Customers each hour to get teh percentages
 //
 // create prototype with the contents of the shop rows
 //
@@ -315,22 +217,60 @@ Shop.prototype.table2RowData = function() {
   thEl.textContent = this.storeName;
   //append the store name
   tbRow.appendChild(thEl);
+  this.getCustpercentage();
 
   // // create a loop to enter cookies per hour for each hour
   for (var j = 0; j < hours.length; j++) {
+
     // create the  table data cell
     var tdEl = document.createElement('td');
     tdEl.textContent = this.percentCustperHour[j];
     tbRow.appendChild(tdEl);
   }
-
   //append row to the table
   tablePercent.appendChild(tbRow);
 };
 
-seattleShop.table2RowData();
-tokyoShop.table2RowData();
-dubaiShop.table2RowData();
-parisShop.table2RowData();
-limaShop.table2RowData();
+tableHeadingHours();
+table2HeadingHours();
+var seattleShop = new Shop('Seattle', 23, 65, 6.3);
+var tokyoShop = new Shop('Tokyo', 3, 24, 1.2);
+var dubaiShop = new Shop('Dubai', 11, 38, 3.7);
+var parisShop = new Shop('Paris', 20, 38, 2.3);
+var limaShop = new Shop('Lima', 2, 16, 4.6);
+tableFooterTotals();
+
+
+//using the submit form and adding the contents into the table 1 and table 2
+var userForm = document.getElementById('user-form');
+userForm.addEventListener('submit',handleSubmit, false);
+
+function handleSubmit(event) {
+  event.preventDefault();
+  // give names to all the submitted values
+  var name = event.target.inputElementName.value; 
+  var minC = event.target.inputElementMinCust.value;
+  var maxC = event.target.inputElementMaxCust.value;
+  var avgC = event.target.inputElementAvgCookies.value;
+
+  minC = parseInt(minC);
+  maxC = parseInt(maxC);
+
+
+  // now remove the totals from the table
+  var footertotals = document.getElementById('table');
+  var lastline = footertotals.lastChild;
+  table.removeChild(lastline);
+
+  // console.log('this is the info:', name, minC, maxC, avgC);
+  new Shop(name, minC, maxC, avgC);
+  // console.log('my MegaArray', nameShop);
+
+  event.target.inputElementName.value = null; 
+  event.target.inputElementMinCust.value = null;
+  event.target.inputElementMaxCust.value = null;
+  event.target.inputElementAvgCookies.value = null;
+
+  tableFooterTotals();
+}
 

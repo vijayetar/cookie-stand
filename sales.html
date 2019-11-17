@@ -23,6 +23,44 @@
 
             </ul>
         </div>
+        <div id="form"></div>
+        <!-- <h2> Enter details for your shop! </h2> -->
+        <form id="user-form">
+            <fieldset>
+                <legend>
+                    Enter Shop Details Here
+                </legend>
+                <label>
+                    Location Name:
+                </label>
+                <br />
+
+                <input id="inputElementName" type= "text"     placeholder="enter name here..." required minlength="2" maxlength="60">
+                <br />
+                <label>
+                    Min customers per hour:
+                </label>
+                <br />
+                <input id="inputElementMinCust" type= "number" placeholder="enter number here..." required value= "1" min="1">
+                <br />
+                <label>
+                    Max customers per hour: 
+                </label>
+                <br />
+                <input id="inputElementMaxCust" type= "number" placeholder="enter number here..." required value= "1" min="1">
+                <br />
+                <label>
+                    Average cookies per customer:
+                </label>
+                <br />
+                <input id="inputElementAvgCookies" type= "number"
+                placeholder="enter number here..." required value="0.1" min="0.1" step="0.1">
+                <br />
+                <input type ="submit" value="Submit" />
+            </fieldset>
+        </form>
+    </div>
+
         <div id="table">
             <h2>
                 Table 1 shows the <em>hourly</em> cookie sales at each location

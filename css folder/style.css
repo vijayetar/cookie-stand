@@ -53,7 +53,77 @@ div {
     text-indent: 5em;
     overflow: scroll;
 }
+legend {
+    font-weight: 900;
+    font-size: larger;
+}
+fieldset {
+    width: 15em;
+    margin-top: 3em;
+    margin-left: 10em;
+    padding: 1em;
+    background-color: white;
+    line-height: 2em;
+    text-align: left;
+    border: 1px dashed black;
+}
 
+input[type="number"] {
+    width: 120px;
+    line-height: inherit;
+    height: 4em;
+    border: 1px solid black;
+    padding: 0.5em;
+    outline: none;
+    text-align: center;
+}
+input[type="number"]:focus,
+input[type="number"]:hover {
+    background-color: bisque;
+    border: 1px solid black;
+}
+input[type="text"] {
+    width: 120px;
+    line-height: inherit;
+    height: 4em;
+    border: 1px solid black;
+    padding: 0.5em;
+    outline: none;
+    text-align: center;
+
+}
+input[type="text"]:focus,
+input[type="text"]:hover {
+    background-color: bisque;
+    border: 1px solid black;
+}
+input[type="submit"] {
+    width: 11em;
+    border: 1px solid green;
+    background-color: rgb(240, 191, 128);
+    color: black;
+    border-radius: 5px;
+    padding: 3px;
+    margin-top: 10px;
+    
+}
+input[type="submit"]:hover {
+    border:1px solid black;
+    background-color: cornflowerblue;
+    color: black;
+    cursor: pointer;
+}
+input :invalid {
+    border: 2px dashed red;
+}
+input :valid {
+    border: 2px dashed black;
+}
+label{
+    font-family: sans-serif;
+    float: left;
+    margin-right: 3em;
+}
 .text {
     display: inline-block;
     position: absolute;
@@ -114,7 +184,7 @@ a:hover {
 #tablePercent {
     width: 70%;
     text-align: center;
-    /* align-content: center; */
+    align-content: center;
     /* border-collapse: collapse; */
     border-spacing: 1px 1px;
     font-family: Arial, Helvetica, sans-serif;
