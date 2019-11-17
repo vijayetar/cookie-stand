@@ -1,28 +1,5 @@
 'use strict';
 
-var userForm = document.getElementById('user-form');
-userForm.addEventListener('submit',handleSubmit, false);
-
-function handleSubmit(event) {
-  event.preventDefault();
-  var name = event.target.inputElementName.value; 
-  var minC = event.target.inputElementMinCust.value;
-  var maxC = event.target.inputElementMaxCust.value;
-  var avgC = event.target.inputElementAvgCookies.value;
-  minC = parseInt(minC);
-  maxC = parseInt(maxC);
-  avgC = parseInt(avgC);
-
-  // console.log('this is the info:', name, minC, maxC, avgC);
-  new Shop(name, minC, maxC, avgC);
-  // console.log('my MegaArray', nameShop);
-
-  name = null;
-  minC = null;
-  maxC = null;
-  avgC = null;
-}
-
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 // find the positon where the new element should be added
@@ -274,4 +251,37 @@ var dubaiShop = new Shop('Dubai', 11, 38, 3.7);
 var parisShop = new Shop('Paris', 20, 38, 2.3);
 var limaShop = new Shop('Lima', 2, 16, 4.6);
 tableFooterTotals();
+
+var userForm = document.getElementById('user-form');
+userForm.addEventListener('submit',handleSubmit, false);
+
+function handleSubmit(event) {
+  event.preventDefault();
+  // give names to all the submitted values
+  var name = event.target.inputElementName.value; 
+  var minC = event.target.inputElementMinCust.value;
+  var maxC = event.target.inputElementMaxCust.value;
+  var avgC = event.target.inputElementAvgCookies.value;
+
+  //convert the strings into numbers
+  minC = parseInt(minC);
+  maxC = parseInt(maxC);
+  avgC = parseInt(avgC);
+
+  // now remove the totals from the table
+  var footertotals = document.getElementById('table');
+  var lastline = footertotals.lastChild;
+  table.removeChild(lastline);
+
+  // console.log('this is the info:', name, minC, maxC, avgC);
+  new Shop(name, minC, maxC, avgC);
+  // console.log('my MegaArray', nameShop);
+
+  event.target.inputElementName.value = null; 
+  event.target.inputElementMinCust.value = null;
+  event.target.inputElementMaxCust.value = null;
+  event.target.inputElementAvgCookies.value = null;
+
+  tableFooterTotals();
+}
 

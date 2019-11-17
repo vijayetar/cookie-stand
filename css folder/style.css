@@ -58,18 +58,22 @@ legend {
     font-size: larger;
 }
 fieldset {
-    width: 35em;
+    width: 15em;
     margin-top: 3em;
     margin-left: 10em;
+    padding: 1em;
     background-color: white;
-    line-height: 3em;
+    line-height: 2em;
     text-align: left;
+    border: 1px dashed black;
 }
 
 input[type="text"] {
     width: 120px;
+    line-height: inherit;
+    height: 4em;
     border: 1px solid black;
-    padding: 2em;
+    padding: 0.5em;
     outline: none;    ;
 }
 input[type="text"]:focus,
