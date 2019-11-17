@@ -263,10 +263,9 @@ function handleSubmit(event) {
   var maxC = event.target.inputElementMaxCust.value;
   var avgC = event.target.inputElementAvgCookies.value;
 
-  //convert the strings into numbers
   minC = parseInt(minC);
   maxC = parseInt(maxC);
-  avgC = parseInt(avgC);
+
 
   // now remove the totals from the table
   var footertotals = document.getElementById('table');
