@@ -252,11 +252,14 @@ function handleSubmit(event) {
 
   minC = parseInt(minC);
   maxC = parseInt(maxC);
-  
+
   //CHECK IF THE MIN IS LESS THAN MAXIMUM
   if (minC > maxC) {
-    alert('the min C should be less than max C');
+    alert('the min number should be less than max number');
   }
+
+  //CHECK IF NAME IS ALREADY ENTERED
+  checkStore(name);
 
   // now remove the totals from the table
   var footertotals = document.getElementById('table');
@@ -273,5 +276,15 @@ function handleSubmit(event) {
   event.target.inputElementAvgCookies.value = null;
 
   tableFooterTotals();
+}
+
+function checkStore(name) {
+  for (var k=0; k<nameShop.length; k++) {
+    if (name === nameShop[k].storeName) {
+      var check = prompt('This shop is already in the system. Do you want to replace the data - Y or N?');
+      console.log(check);
+    }
+  }
+  return name;
 }
 
