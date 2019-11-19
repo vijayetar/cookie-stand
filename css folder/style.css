@@ -4,10 +4,20 @@ body {
     word-wrap: normal;
 }
 
-h1 {
-    margin: 0px auto;
+.space_over_header {
     width: 100%;
-    height: auto;
+    height: 2em;
+    background-color: hsla(40, 40%, 90%, 1);
+    position: fixed;
+    top: -2em;
+    border-collapse: collapse;
+    z-index: 10;
+}
+
+h1 {
+    margin: 1px auto;
+    width: 100%;
+    height: 2em;
     padding: 1em;
     background-color: rgba(201, 178, 117, 1);
     background-image: linear-gradient(45deg, rgba(204, 193, 164, 1), #A95833);
@@ -31,16 +41,23 @@ h2 {
     font-weight: bolder;
 }
 
+span {
+    margin-top: 2em;
+    margin-left: 1em;
+    display: inline-block;
+    position: fixed;
+    right: 5em;
+    top: 1em;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 2em;
+    z-index: 10;
+}
+
 .space {
-    height: 10em;
+    height: 5em;
     width: 100%;
     position: relative;
     z-index: 1;
-}
-
-.table {
-    width: 75%;
-    height: 45em;
 }
 
 div {
@@ -53,6 +70,13 @@ div {
     text-indent: 5em;
     overflow: scroll;
 }
+
+#map {
+        margin-top: 4em;
+        margin-left: 10em;
+        padding: 1em;
+}
+
 legend {
     font-weight: 900;
     font-size: larger;
@@ -76,6 +100,7 @@ input[type="number"] {
     padding: 0.5em;
     outline: none;
     text-align: center;
+    font-size: small;
 }
 input[type="number"]:focus,
 input[type="number"]:hover {
@@ -90,6 +115,7 @@ input[type="text"] {
     padding: 0.5em;
     outline: none;
     text-align: center;
+    font-size: small;
 
 }
 input[type="text"]:focus,
@@ -138,25 +164,14 @@ footer {
     background-image: url("../images/salmon_blur_crop.gif");
     background-color: #6E6353;
     width: 100%;
-    height: 35%;
+    height: 45%;
     padding: 0.3em;
     font-family: 'Gloria Hallelujah', cursive;
-    /* font-display: fallback; */
     text-indent: 1em;
     color: white;
     font-size: 2rem;
     text-transform: lowercase;
-    /* text-shadow: 1px 1px 4px black; */
     position: bottom;
-}
-
-.navbar {
-    display: inline-block;
-    right: auto;
-    margin-left: 1px;
-    color: white;
-    font-family: 'Gloria Hallelujah', cursive;
-    font-size: 1em;
 }
 
 a :active {
@@ -169,26 +184,31 @@ a:hover {
     text-decoration: underline;
 }
 
-*/ .fa {
+/* .fa *\ {
     padding: 20px;
-    font-size: 50px;
+    font-size: 2rem;
     color: cornflowerblue;
     width: 30px;
-    float: left;
+    position: relative;
+    top: -5em;
+    right: 100px;
     z-index: 10;
     text-decoration: none;
     border-radius: 50%;
-}
+} */
 
 #table,
 #tablePercent {
-    width: 70%;
+    width: 80%;
+    margin-left: 10em;
+    margin-top: 2em;
     text-align: center;
     align-content: center;
     /* border-collapse: collapse; */
     border-spacing: 1px 1px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 
 th,
 td {
@@ -202,6 +222,7 @@ th {
     font-size: 1em;
     font-family: fantasy;
     font-weight: 900;
+    width: auto;
 }
 
 tr:hover {
