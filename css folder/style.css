@@ -99,6 +99,7 @@ input[type="number"] {
     padding: 0.5em;
     outline: none;
     text-align: center;
+    font-size: small;
 }
 input[type="number"]:focus,
 input[type="number"]:hover {
@@ -113,6 +114,7 @@ input[type="text"] {
     padding: 0.5em;
     outline: none;
     text-align: center;
+    font-size: small;
 
 }
 input[type="text"]:focus,

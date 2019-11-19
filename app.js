@@ -4,11 +4,8 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 
 // find the positon where the new element should be added
 var position = document.getElementById('cookiesList');
-
 var nameShop = [];
-
 var sumTotalatEachHour = 0;
-
 var sumTotalsatEachShop = 0;
 
 // identify the table
@@ -40,7 +37,7 @@ function Shop(storeName, minCustEachHour, maxCustEacHour, avgCookiesPerCustomer)
 //
 // // create randomnumber method associated with Shop
 Shop.prototype.randomNumber = function() {
-  return (Math.floor(Math.random() * (this.maxCustEacHour - this.minCustEachHour + 1) + this.minCustEachHour));
+  return (Math.ceil(Math.random() * (this.maxCustEacHour - this.minCustEachHour + 1) + this.minCustEachHour));
 };
 
 // // insert heading in the data List
@@ -157,7 +154,7 @@ Shop.prototype.renderNewTable = function() {
     // // generate cookies every hour by using the random number of customers every hour
     var cookiesHourly = this.customersEachHour[i] * this.avgCookiesPerCustomer;
 
-    cookiesHourly = Math.round(cookiesHourly);
+    cookiesHourly = Math.ceil(cookiesHourly);
     // // and then push it into the array for cookies each hour
     this.cookiesEachHour.push(cookiesHourly);
 
@@ -255,7 +252,11 @@ function handleSubmit(event) {
 
   minC = parseInt(minC);
   maxC = parseInt(maxC);
-
+  
+  //CHECK IF THE MIN IS LESS THAN MAXIMUM
+  if (minC > maxC) {
+    alert('the min C should be less than max C');
+  }
 
   // now remove the totals from the table
   var footertotals = document.getElementById('table');
