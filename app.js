@@ -256,6 +256,11 @@ function handleSubmit(event) {
   //CHECK IF THE MIN IS LESS THAN MAXIMUM
   if (minC > maxC) {
     alert('the min number should be less than max number');
+    event.target.inputElementName.value = null; 
+    event.target.inputElementMinCust.value = null;
+    event.target.inputElementMaxCust.value = null;
+    event.target.inputElementAvgCookies.value = null;  
+    return;
   }
 
   //CHECK IF NAME IS ALREADY ENTERED
@@ -281,10 +286,26 @@ function handleSubmit(event) {
 function checkStore(name) {
   for (var k=0; k<nameShop.length; k++) {
     if (name === nameShop[k].storeName) {
-      var check = prompt('This shop is already in the system. Do you want to replace the data - Y or N?');
-      console.log(check);
+      // console.log(check);
+      event.target.inputElementName.value = null; 
+      event.target.inputElementMinCust.value = null;
+      event.target.inputElementMaxCust.value = null;
+      event.target.inputElementAvgCookies.value = null;
+      alert('This shop is already in the system. Please replace the data!');
+      userForm.addEventListener('submit',handleSubmit, false);
+      k = nameShop.length;
     }
   }
-  return name;
 }
+
+
+// if (check==='Y'|| check==='y') {
+//   //Allow data change
+//   changeStoreData();
+// function changeStoreData() {
+// // delete the old information
+//   var removeEl = document.getElementsByTagName('th');
+//   console.log('length of all removeEl', removeEl.length, 'and removeEl', removeEl);
+//   // return removeEl;
+// }
 
