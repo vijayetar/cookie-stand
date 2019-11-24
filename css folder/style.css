@@ -14,7 +14,7 @@ body {
     z-index: 10;
 }
 
-h1, h3 {
+h1 {
     margin: 1px auto;
     width: 100%;
     height: 2em;
@@ -186,6 +186,7 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Sales table CSS */
 #table,
 #tablePercent {
     width: 80%;
