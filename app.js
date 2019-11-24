@@ -115,7 +115,6 @@ function tableFooterTotals() {
     sumTotalatEachHour = 0;
 
     for (var k = 0; k < nameShop.length; k++) {
-      // console.log('this is j', j, 'this is my k', k);
       // console.log('this is the number being added', nameShop[k].cookiesEachHour[j]);
       sumTotalatEachHour += nameShop[k].cookiesEachHour[j];
       // console.log('this is the sumtotal', sumTotalatEachHour);
@@ -149,7 +148,6 @@ Shop.prototype.renderNewTable = function() {
     //   // push random number into the array for customers every hour
 
     this.customersEachHour.push(this.randomNumber());
-    //console.log('this is customers each hour', this.customersEachHour[i]);
 
     // // generate cookies every hour by using the random number of customers every hour
     var cookiesHourly = this.customersEachHour[i] * this.avgCookiesPerCustomer;
@@ -163,8 +161,6 @@ Shop.prototype.renderNewTable = function() {
     // // generate the total cookies for the shop
     this.totalCookiesForTheDay += this.cookiesEachHour[i];
     // console.log('shopName', this.storeName, 'this is the total cookies', this.totalCookiesForTheDay);
-    // console.log('this new style is working!!!');
-
   }
   // insert the data into the table row
   this.tableRowData();
@@ -240,18 +236,9 @@ tableFooterTotals();
 
 //using the submit form and adding the contents into the table 1 and table 2
 var userForm = document.getElementById('user-form');
-userForm.addEventListener('submit',handleSubmit, false);
+userForm.addEventListener('submit',checkStore, false);
 
-function handleSubmit(event) {
-  event.preventDefault();
-  // give names to all the submitted values
-  var name = event.target.inputElementName.value; 
-  var minC = event.target.inputElementMinCust.value;
-  var maxC = event.target.inputElementMaxCust.value;
-  var avgC = event.target.inputElementAvgCookies.value;
-
-  minC = parseInt(minC);
-  maxC = parseInt(maxC);
+function handleSubmit(name, minC, maxC, avgC) {
 
   //CHECK IF THE MIN IS LESS THAN MAXIMUM
   if (minC > maxC) {
@@ -262,9 +249,6 @@ function handleSubmit(event) {
     event.target.inputElementAvgCookies.value = null;  
     return;
   }
-
-  //CHECK IF NAME IS ALREADY ENTERED
-  checkStore(name);
 
   // now remove the totals from the table
   var footertotals = document.getElementById('table');
@@ -283,29 +267,32 @@ function handleSubmit(event) {
   tableFooterTotals();
 }
 
-function checkStore(name) {
+function checkStore(event) {
+  event.preventDefault();
+  // give names to all the submitted values
+  var name = event.target.inputElementName.value; 
+  var minC = event.target.inputElementMinCust.value;
+  var maxC = event.target.inputElementMaxCust.value;
+  var avgC = event.target.inputElementAvgCookies.value;
+
+  minC = parseInt(minC);
+  maxC = parseInt(maxC);
+
   for (var k=0; k<nameShop.length; k++) {
     if (name === nameShop[k].storeName) {
       // console.log(check);
+      alert('This shop is already in the system. Please replace the data!');
       event.target.inputElementName.value = null; 
       event.target.inputElementMinCust.value = null;
       event.target.inputElementMaxCust.value = null;
       event.target.inputElementAvgCookies.value = null;
-      alert('This shop is already in the system. Please replace the data!');
-      userForm.addEventListener('submit',handleSubmit, false);
+      // userForm.addEventListener('submit',handleSubmit, false);
       k = nameShop.length;
+      console.log('this is k', k);
+      return k;
     }
   }
+  handleSubmit(name, minC, maxC, avgC);
 }
 
-
-// if (check==='Y'|| check==='y') {
-//   //Allow data change
-//   changeStoreData();
-// function changeStoreData() {
-// // delete the old information
-//   var removeEl = document.getElementsByTagName('th');
-//   console.log('length of all removeEl', removeEl.length, 'and removeEl', removeEl);
-//   // return removeEl;
-// }
 
