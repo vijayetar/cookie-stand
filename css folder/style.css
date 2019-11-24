@@ -71,15 +71,40 @@ span a {
     z-index: 10;
 }
 
-.mapouter {
-        margin-top: 10em;
-        margin-left: 10em;
-        padding: 1em;
+figure>img{
+    margin:10em 0em 0em 0em;
+}
+figcaption, h3+p{
+    font-family: 'Gentium Book Basic', serif;
+    margin: 0em 0em 0em 30em;
+    width: 30%;
+    word-wrap: break-word;
+    padding: 3px;
+    font-size:20px;
+}
+img {
+    border: 0.5px solid #d9d9d9;
+}
+h3{
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 20px;
+    margin: 0em 0em 0em 30em;
+    padding: 3px;
+    text-transform: capitalize;
+
+}
+.items {
+    margin-left: 45em;
+    margin-top: 5em;
+}
+.items+figcaption{
+    margin-left: 35em;
+
 }
 section {
     float: right;
 }
-
+/* THIS IS THE SALES HTML DETAILS */
 legend {
     font-weight: 900;
     font-size: larger;
@@ -87,11 +112,12 @@ legend {
 fieldset {
     width: 15em;
     margin-top: 15em;
-    margin-left: 10em;
+    margin-left: 25em;
     padding: 3em;
     background-color: white;
     text-align: left;
     border: 1px dashed black;
+
 }
 
 input[type="number"] {
@@ -158,7 +184,6 @@ label{
 }
 
 div>p>h3 {
-    font: 15px;
     position: fixed;
 }
 
@@ -172,12 +197,15 @@ footer {
     text-indent: 1em;
     color: white;
     font-size: 2rem;
-    text-transform: lowercase;
+    text-transform: capitalize;
     position: bottom;
+}
+footer h3, footer p {
+    margin-left: 10em;
 }
 
 a :active {
-    color: whitesmoke;
+    color: rgb(21, 46, 155);
     text-decoration: none;
 }
 
@@ -190,15 +218,18 @@ a:hover {
 #table,
 #tablePercent {
     width: 80%;
-    margin-left: 10em;
     margin-top: 2em;
     text-align: center;
-    align-content: center;
-    /* border-collapse: collapse; */
     border-spacing: 1px 1px;
     font-family: Arial, Helvetica, sans-serif;
-}
+    margin-left: 25em;
+    /* border: 3px dashed red; */
 
+}
+#table>h2, #tablePercent>h2 {
+    margin-left: 5em;
+    text-align: left;
+}
 
 th,
 td {
