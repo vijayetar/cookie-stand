@@ -37,7 +37,7 @@ function Shop(storeName, minCustEachHour, maxCustEacHour, avgCookiesPerCustomer)
 //
 // // create randomnumber method associated with Shop
 Shop.prototype.randomNumber = function() {
-  return (Math.ceil(Math.random() * (this.maxCustEacHour - this.minCustEachHour + 1) + this.minCustEachHour));
+  return (Math.floor(Math.random() * (this.maxCustEacHour - this.minCustEachHour + 1) + this.minCustEachHour));
 };
 
 // // insert heading in the data List
@@ -146,11 +146,14 @@ Shop.prototype.renderNewTable = function() {
     //   // push random number into the array for customers every hour
 
     this.customersEachHour.push(this.randomNumber());
-
+    console.log('random number', this.customersEachHour[i]);
     // // generate cookies every hour by using the random number of customers every hour
     var cookiesHourly = this.customersEachHour[i] * this.avgCookiesPerCustomer;
+    console.log('cookies hourly before ceiling', cookiesHourly);
 
     cookiesHourly = Math.ceil(cookiesHourly);
+    console.log('cookies hourly after ceiling', cookiesHourly);
+
     // // and then push it into the array for cookies each hour
     this.cookiesEachHour.push(cookiesHourly);
 
@@ -158,7 +161,7 @@ Shop.prototype.renderNewTable = function() {
 
     // // generate the total cookies for the shop
     this.totalCookiesForTheDay += this.cookiesEachHour[i];
-    // console.log('shopName', this.storeName, 'this is the total cookies', this.totalCookiesForTheDay);
+    console.log('shopName', this.storeName, 'this is the total cookies', this.totalCookiesForTheDay);
   }
   // insert the data into the table row
   this.tableRowData();
@@ -231,6 +234,12 @@ var parisShop = new Shop('Paris', 20, 38, 2.3);
 var limaShop = new Shop('Lima', 2, 16, 4.6);
 tableFooterTotals();
 
+function makeNull() {
+  event.target.inputElementName.value = null; 
+  event.target.inputElementMinCust.value = null;
+  event.target.inputElementMaxCust.value = null;
+  event.target.inputElementAvgCookies.value = null;  
+}
 
 //using the submit form and adding the contents into the table 1 and table 2
 var userForm = document.getElementById('user-form');
@@ -238,13 +247,12 @@ userForm.addEventListener('submit',checkStore, false);
 
 function handleSubmit(name, minC, maxC, avgC) {
 
+  makeNull();
+
   //CHECK IF THE MIN IS LESS THAN MAXIMUM
   if (minC > maxC) {
     alert('the min number should be less than max number');
-    event.target.inputElementName.value = null; 
-    event.target.inputElementMinCust.value = null;
-    event.target.inputElementMaxCust.value = null;
-    event.target.inputElementAvgCookies.value = null;  
+    makeNull();
     return;
   }
 
@@ -257,10 +265,7 @@ function handleSubmit(name, minC, maxC, avgC) {
   new Shop(name, minC, maxC, avgC);
   // console.log('my MegaArray', nameShop);
 
-  event.target.inputElementName.value = null; 
-  event.target.inputElementMinCust.value = null;
-  event.target.inputElementMaxCust.value = null;
-  event.target.inputElementAvgCookies.value = null;
+  makeNull();
 
   tableFooterTotals();
 }
@@ -280,10 +285,7 @@ function checkStore(event) {
     if (name === nameShop[k].storeName) {
       // console.log(check);
       alert('This shop is already in the system. Please replace the data!');
-      event.target.inputElementName.value = null; 
-      event.target.inputElementMinCust.value = null;
-      event.target.inputElementMaxCust.value = null;
-      event.target.inputElementAvgCookies.value = null;
+      makeNull();
       // userForm.addEventListener('submit',handleSubmit, false);
       k = nameShop.length;
       console.log('this is k', k);
