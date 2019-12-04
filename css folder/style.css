@@ -247,3 +247,12 @@ th {
 tr:hover {
     background-color: #f6f6f6;
 }
+
+ #address {
+    height: 100%;
+    width: 100%;
+    text-transform: capitalize;
+    /* color: white; */
+    line-height: 1.5em;
+    word-spacing: 1.5em; 
+}
