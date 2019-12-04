@@ -7,34 +7,14 @@ var position = document.getElementById('cookiesList');
 var nameShop = [];
 var sumTotalatEachHour = 0;
 var sumTotalsatEachShop = 0;
-var locations = [{name:'Seattle Shop', add: '2323 Alaskan Way', open: '7am - 8pm daily', phone: 'DO-NOT-VISIT'},{name:'Tokyo Shop', add: '2323 Fisherman Way', open: '7am - 8pm daily', phone: 'DO-NOT-VISIT'}, {name:'Dubai Shop', add: '6565 Market street', open: '7am - 8pm daily', phone: 'DO-NOT-VISIT'}, {name:'Paris Shop', add: '201 NotreDam Way', open: '7am - 8pm daily', phone: 'DO-NOT-VISIT'}, {name:'Lima Shop', add: '102 Julius Highway', open: '7am - 8pm daily', phone: 'DO-NOT-VISIT'}];
-
 
 var table = document.getElementById('table');
-var address = document.getElementById('address');
 
 // variables to determine the percentage of customer
 var percentCust = 0;
 var tablePercent = document.getElementById('tablePercent');
 
-function show(elem){
-  elem.style.display = 'block';
-}
-function hide(elem){
-  elem.style.display = 'none';
-}
 
-
-//display contact details
-function contactDetails() {
-  for (var k=0; k<locations.length; k++){
-    var liEl = document.createElement('li');
-    liEl.textContent = `${locations[k].name} is in ${locations[k].add} and we are open ${locations[k].open}. Our number is ${locations[k].phone}`;
-    address.appendChild(liEl);
-  }
-}
-
-contactDetails();
 //
 // Create the object constructor notation to create multiple objects
 //
@@ -312,5 +292,3 @@ function checkStore(event) {
   }
   handleSubmit(name, minC, maxC, avgC);
 }
-
-
