@@ -8,12 +8,12 @@ var nameShop = [];
 var sumTotalatEachHour = 0;
 var sumTotalsatEachShop = 0;
 
-// identify the table
 var table = document.getElementById('table');
 
 // variables to determine the percentage of customer
 var percentCust = 0;
 var tablePercent = document.getElementById('tablePercent');
+
 
 //
 // Create the object constructor notation to create multiple objects
@@ -117,7 +117,6 @@ function tableFooterTotals() {
     for (var k = 0; k < nameShop.length; k++) {
       // console.log('this is the number being added', nameShop[k].cookiesEachHour[j]);
       sumTotalatEachHour += nameShop[k].cookiesEachHour[j];
-      // console.log('this is the sumtotal', sumTotalatEachHour);
     }
     // make the last row and add the sum totals for each hour
     thEl = document.createElement('th');
@@ -125,9 +124,8 @@ function tableFooterTotals() {
     tbRow.appendChild(thEl);
   }
 
-  for (var k = 0; k < nameShop.length; k++) {
-    sumTotalsatEachShop += nameShop[k].totalCookiesForTheDay;
-    // console.log('this is the total', sumTotalsatEachShop);
+  for (var i = 0; i < nameShop.length; i++) {
+    sumTotalsatEachShop += nameShop[i].totalCookiesForTheDay;
   }
   // make the last row and add the totals for each shop
   thEl = document.createElement('th');
@@ -294,5 +292,3 @@ function checkStore(event) {
   }
   handleSubmit(name, minC, maxC, avgC);
 }
-
-
